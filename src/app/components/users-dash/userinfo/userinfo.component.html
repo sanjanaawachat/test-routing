@@ -1,0 +1,8 @@
+
+<div class="row mt-5">
+    <div class="col-md-8 offset-md-2">
+<p class="alert alert-primary">the userName is {{userobj.userName}} and the userId is {{userobj.userId}}</p>
+<button [routerLink]="['/users', userobj.userId,'edituser']" class="btn btn-sm btn-outline-primary mr-3">EDIT</button>
+
+<button (click)="onRemove()" class="btn btn-sm btn-outline-danger">REMOVE</button>
+</div></div>

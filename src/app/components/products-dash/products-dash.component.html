@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-md-12 mb-4 text-right">
+        <button routerLink="addproduct" class="btn btn-sm btn-outline-primary">ADD PRODUCT</button>
+    </div>
+
+</div>
+
+
+<div class="row mt-5">
+    <div class="col-md-8 offset-2">
+       <ul *ngFor="let prod of prodArr" class="list-group">
+        <li [routerLink]="[prod.prodId]" class="list-group-item">{{prod.pname}} {{prod.prodId}}</li>
+       </ul>
+    </div>
+</div>
