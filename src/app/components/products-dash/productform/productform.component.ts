@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Iproduct } from 'src/app/models/Iproduct';
 import { ProdDashService } from 'src/app/services/prod-dash.service';
 import { UuidService } from 'src/app/services/uuid.service';
@@ -14,12 +14,14 @@ export class ProductformComponent implements OnInit {
 isInEditMode:boolean=false;
   productId!: string;
   prodform!: FormGroup;
-  prodobj!:Iproduct
+  prodobj!:Iproduct;
+  updateBtnDisable:boolean=false;
   constructor(private _route:ActivatedRoute,private _prodservice:ProdDashService,private _uuidservice:UuidService) { }
 
   ngOnInit(): void {
-    this.setEditMode();
     this.createprodform();
+    this.setEditMode();
+ 
   }
    
   setEditMode(){
@@ -29,8 +31,17 @@ if (this.productId) {
 this.prodobj=this._prodservice.getproduct(this.productId);
 console.log(this.prodobj);
 
-let canreturn=this.prodobj.canreturn ? 'Yes'  :'No';
-this.prodform.patchValue({...this.prodobj,canreturn:canreturn})
+let canReturn=this.prodobj.canreturn ? 'Yes'  :'No';
+this.prodform.patchValue({...this.prodobj,canreturn:canReturn})
+
+this._route.queryParams
+    .subscribe((params:Params)=>{
+      console.log(params);
+      if (params['canEdit']==='0') {
+        this.prodform.disable();
+        this.updateBtnDisable=true
+      }
+    })
 
 }else{
   this.isInEditMode=false;
@@ -69,6 +80,8 @@ onupdate(){
       console.log(canreturnval);
       let updatedobj:Iproduct={...this.prodform.value,canreturn:canreturnval,prodId:this.productId
       }
+      console.log(updatedobj);
+      
       this._prodservice.updateproduct(updatedobj)
     }
 }

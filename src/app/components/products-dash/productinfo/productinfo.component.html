@@ -1,7 +1,19 @@
-<div class="row mt-5">
-    <div class="col-md-8 offset-md-2">
-<p class="alert alert-primary">the Product Name is {{prodobj.pname}} and the proId is {{prodobj.prodId}}</p>
-<button [routerLink]="['/products', prodobj.prodId,'editproduct']" class="btn btn-sm btn-outline-primary mr-3">EDIT</button>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <p class="alert alert-primary">
+      the Product Name is {{ prodobj.pname }} and the proId is
+      {{ prodobj.prodId }}
+    </p>
+    <button
+      [routerLink]="['/products', prodobj.prodId, 'editproduct']"
+      [queryParamsHandling]="'preserve'"
+      class="btn btn-sm btn-outline-primary mr-3"
+    >
+      EDIT
+    </button>
 
-<button class="btn btn-sm btn-outline-danger">REMOVE</button>
-</div></div>
+    <button (click)="onproRemove()" class="btn btn-sm btn-outline-danger">
+      REMOVE
+    </button>
+  </div>
+</div>

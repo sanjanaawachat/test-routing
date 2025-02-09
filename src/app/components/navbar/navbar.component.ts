@@ -12,4 +12,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // onLogin(){
+  //   this._authsevice.
+  // }
+  // onLogout(){
+
+  // }
 }

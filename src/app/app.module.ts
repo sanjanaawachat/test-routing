@@ -14,7 +14,11 @@ import { UserformComponent } from './components/users-dash/userform/userform.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductinfoComponent } from './components/products-dash/productinfo/productinfo.component';
 import { ProductformComponent } from './components/products-dash/productform/productform.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { GetconfirmComponent } from './components/getconfirm/getconfirm.component';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,14 +30,19 @@ import { ProductformComponent } from './components/products-dash/productform/pro
     UserinfoComponent,
     UserformComponent,
     ProductinfoComponent,
-    ProductformComponent
+    ProductformComponent,
+    GetconfirmComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatButtonModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

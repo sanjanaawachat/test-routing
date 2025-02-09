@@ -28,43 +28,50 @@ const appRoutes:Routes=[
     {
         path:'users',      //http://localhost/4200/home
         component:UsersDashComponent,
-        title:"USERS"
+        title:"USERS",
+        children:[
+            {
+                path:'adduser',      //http://localhost/4200/adduser
+                component:UserformComponent,
+                title:"USERS"
+            },
+            {
+                path:':userId',      //http://localhost/4200/123
+                component:UserinfoComponent,
+                title:"USERS"
+            },
+            {
+                path:':userId/edituser',      //http://localhost/4200/123/edituser
+                component:UserformComponent,
+                title:"USERS"
+            },
+        ],
+        canActivate:[]
     },
-    {
-        path:'users/adduser',      //http://localhost/4200/home
-        component:UserformComponent,
-        title:"USERS"
-    },
-    {
-        path:'users/:userId',      //http://localhost/4200/home
-        component:UserinfoComponent,
-        title:"USERS"
-    },
-    {
-        path:'users/:userId/edituser',      //http://localhost/4200/home
-        component:UserformComponent,
-        title:"USERS"
-    },
+   
     {
         path:'products',      //http://localhost/4200/home
         component:ProductsDashComponent,
-        title:"PRODUCTS"
+        title:"PRODUCTS",
+        children:[
+            {
+                path:'addproduct',      //http://localhost/4200/home
+                component:ProductformComponent,
+                title:"PRODUCTS"
+            },
+            {
+                path:':prodId',      //http://localhost/4200/home
+                component:ProductinfoComponent,
+                title:"PRODUCTS"
+            },
+            {
+                path:':prodId/editproduct',      //http://localhost/4200/home
+                component:ProductformComponent,
+                title:"PRODUCTS"
+            },
+        ]
     },
-    {
-        path:'products/addproduct',      //http://localhost/4200/home
-        component:ProductformComponent,
-        title:"PRODUCTS"
-    },
-    {
-        path:'products/:prodId',      //http://localhost/4200/home
-        component:ProductinfoComponent,
-        title:"PRODUCTS"
-    },
-    {
-        path:'products/:prodId/editproduct',      //http://localhost/4200/home
-        component:ProductformComponent,
-        title:"PRODUCTS"
-    },
+ 
   
     {
         path:'pagenotfound',   //http://localhost/4200/products

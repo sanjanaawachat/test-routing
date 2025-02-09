@@ -1,6 +1,6 @@
 
-<div class="row mt-5">
-    <div class="col-md-8 offset-md-2" >
+<div class="row">
+    <div class="col-md-6 offset-md-2 mr-5" >
         <div class="card">
             <div class="card-body">
                 <form [formGroup]="prodform" (ngSubmit)="onproadd()">
@@ -20,13 +20,13 @@
 
                     
                     <div class="form-group">
-                        <label for="canreturn">CanReturn:</label>
+                        <label for="canreturn">Product CanReturn:</label>
                        <select name="canreturn" id="canreturn" formControlName="canreturn" class="form-control">
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                        </select>
                     </div>
-                    <button type="submit" (click)="onupdate()"  class="btn btn-sm btn-outline-primary">{{isInEditMode ? "update product" : "add product"}}</button>
+                    <button [disabled]="updateBtnDisable" [type]="isInEditMode ? 'button' : 'submit'"  class="btn btn-sm btn-outline-primary" (click)="onupdate()" >{{isInEditMode ? 'update product' : 'add product'}}</button>
                 </form>
             </div>
         </div>

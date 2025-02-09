@@ -1,15 +1,28 @@
-<div class="row">
-    <div class="col-md-12 mb-4 text-right">
-        <button routerLink="addproduct" class="btn btn-sm btn-outline-primary">ADD PRODUCT</button>
+<div style="position: relative; left: 45px">
+  <div class="col-md-8 offset-md-2 mt-5 mr-2 text-right">
+    <button routerLink="addproduct" class="btn btn-sm btn-outline-primary">
+      ADD PRODUCT
+    </button>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <ul class="list-group" *ngIf="prodArr.length > 0; else noprod">
+        <li
+          (click)="navigatetoproduct(prod)"
+          routerLinkActive="active"
+          class="list-group-item"
+          *ngFor="let prod of prodArr"
+        >
+          {{ prod.pname }}
+        </li>
+      </ul>
+      <ng-template #noprod>
+        <p class="alert alert-info">NO PRODUCT ADDED YET!!!!!!!!!!!!</p>
+      </ng-template>
     </div>
-
-</div>
-
-
-<div class="row mt-5">
-    <div class="col-md-8 offset-2">
-       <ul *ngFor="let prod of prodArr" class="list-group">
-        <li [routerLink]="[prod.prodId]" class="list-group-item">{{prod.pname}} {{prod.prodId}}</li>
-       </ul>
+    <div class="col-md-8">
+      <router-outlet></router-outlet>
     </div>
+  </div>
 </div>

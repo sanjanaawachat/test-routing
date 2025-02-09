@@ -1,18 +1,29 @@
+<div style="position: relative; left: 45px">
+  <div class="col-md-8 offset-md-2 mt-5 mr-2 text-right">
+    <button routerLink="/users/adduser" class="btn btn-sm btn-outline-primary">
+      ADD USER
+    </button>
+  </div>
 
-    <div class="col-md-8 offset-md-2 mt-5 mr-2 text-right">
-        <button routerLink="/users/adduser" class="btn btn-sm btn-primary">ADD USER</button>
-    </div>
-
-
-<div class="row mt-5">
-<div class="col-md-8 offset-md-2">
-    <ul class="list-group" *ngIf="userArr.length>0 ;else nouser">
-        <li [routerLink]=[user.userId] *ngFor="let user of userArr" class="list-group-item">
-            {{user.userName}} {{user.userRole}}
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <ul class="list-group" *ngIf="userArr.length > 0; else nouser">
+        <li
+          [routerLink]="[user.userId]"
+          [queryParams]="{ userRole: user.userRole }"
+          routerLinkActive="active"
+          *ngFor="let user of userArr"
+          class="list-group-item"
+        >
+          {{ user.userName }} {{ user.userRole }}
         </li>
-    </ul>
-    <ng-template #nouser>
+      </ul>
+      <ng-template #nouser>
         <p class="alert alert-primary">No user added yet!!!!!!!!!!!!!</p>
-    </ng-template>
-</div>
+      </ng-template>
+    </div>
+    <div class="col-md-8">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
