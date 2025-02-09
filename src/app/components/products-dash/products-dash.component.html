@@ -11,6 +11,7 @@
         <li
           (click)="navigatetoproduct(prod)"
           routerLinkActive="active"
+          [routerLink]="[prod.prodId]"
           class="list-group-item"
           *ngFor="let prod of prodArr"
         >
